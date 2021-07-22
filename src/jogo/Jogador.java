@@ -1,8 +1,8 @@
-package game;
+package jogo;
 
-public class Model {
+public class Jogador {
 
-    private int usuario;
+    private Integer usuario;
 
     private Integer computador;
 

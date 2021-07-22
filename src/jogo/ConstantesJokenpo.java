@@ -1,4 +1,4 @@
-package game;
+package jogo;
 
 
 
@@ -34,4 +34,8 @@ public class ConstantesJokenpo {
     public static final String TESOURA = "Tesoura";
 
     public static final String PAPEL = "Papel";
+
+    public static final String PONTOS_COMPUTADOR = "Pontos do computador: ";
+
+    public static final String PONTOS_USUARIO = "Pontos do usuario: ";
 }

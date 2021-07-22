@@ -1,15 +1,14 @@
-package game;
+package jogo;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Vector;
 
 public class ServicoJokenpo {
 
     private String resposta;
 
-    private Model model = new Model();
+    private Jogador jogador = new Jogador();
 
     private int pontosUsuario = 0;
 
@@ -39,13 +38,12 @@ public class ServicoJokenpo {
                 Scanner sc1 = new Scanner(System.in);
                 System.out.println(ConstantesJokenpo.ESCOLHA_USUARIO);
                 String usuario = sc1.next();
-                String verifica = model.getUsuario().toString();
                 while ( !usuario.equals("1") && !usuario.equals("2") && !usuario.equals("3")){
                     System.out.println(ConstantesJokenpo.ESCOLHA_INVALIDA );
                     usuario = sc1.next();
                 }
-                Integer transform = Integer.parseInt(usuario);
-                model.setUsuario(transform - 1);
+                Integer transforma = Integer.parseInt(usuario);
+                jogador.setUsuario(transforma - 1);
 
                 sortComputadorEscolha();
 
@@ -58,15 +56,20 @@ public class ServicoJokenpo {
 
             defineCampeao();
 
+            pontosUsuario = 0;
+            pontosComputador = 0;
+
             jogarJogo();
+
+
         }
 
     }
 
     public void sortComputadorEscolha(){
-        Random random = new Random();
-        Integer computador = random.nextInt(2);
-        model.setComputador(computador);
+        Random geraAleatorio = new Random();
+        Integer computador = geraAleatorio.nextInt(2);
+        jogador.setComputador(computador);
     }
 
     public void mostraEscolhas(){
@@ -75,21 +78,20 @@ public class ServicoJokenpo {
         opcoes.add(ConstantesJokenpo.TESOURA);
         opcoes.add(ConstantesJokenpo.PAPEL);
 
-        String EscolhaComputador = opcoes.get(model.getComputador());
-        String EscolhaUsuario = opcoes.get(model.getUsuario());
-
+        String EscolhaComputador = opcoes.get(jogador.getComputador());
+        String EscolhaUsuario = opcoes.get(jogador.getUsuario());
 
         System.out.println(ConstantesJokenpo.OPCAO_ESCOLHIDA_USUARIO + EscolhaUsuario + "\n"
         + ConstantesJokenpo.OPCAO_ESCOLHIDA_COMPUTADOR + EscolhaComputador);
     }
 
     public void defineGanhadorRodada(){
-        if (model.getUsuario().equals(model.getComputador())){
+        if (jogador.getUsuario().equals(jogador.getComputador())){
             System.out.println(ConstantesJokenpo.EMPATE);
         }
         else {
-            if ((model.getUsuario() + model.getComputador()) % 2 == 0 ){
-                if (model.getUsuario() > model.getComputador()){
+            if ((jogador.getUsuario() + jogador.getComputador()) % 2 == 0 ){
+                if (jogador.getUsuario() > jogador.getComputador()){
                     System.out.println(ConstantesJokenpo.VENCEDOR_RODADA);
                     pontosUsuario++;
                 }
@@ -99,8 +101,8 @@ public class ServicoJokenpo {
                 }
             }
 
-            if ((model.getUsuario() + model.getComputador()) % 2 == 1){
-                if (model.getUsuario() < model.getComputador()){
+            if ((jogador.getUsuario() + jogador.getComputador()) % 2 == 1){
+                if (jogador.getUsuario() < jogador.getComputador()){
                     System.out.println(ConstantesJokenpo.VENCEDOR_RODADA);
                     pontosUsuario++;
                 }
@@ -113,6 +115,9 @@ public class ServicoJokenpo {
     }
 
     public void defineCampeao(){
+        System.out.println(ConstantesJokenpo.PONTOS_COMPUTADOR + pontosComputador + "\n" +
+                ConstantesJokenpo.PONTOS_USUARIO + pontosUsuario + "\n");
+
         if (pontosUsuario > pontosComputador){
             System.out.println(ConstantesJokenpo.VENCEDOR_JOGO);
         }
