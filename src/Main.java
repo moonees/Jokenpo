@@ -1,4 +1,4 @@
-import jogo.ServicoJokenpo;
+import jogo.servico.ServicoJokenpo;
 
 public class Main {
 

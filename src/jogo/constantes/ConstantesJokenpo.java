@@ -1,4 +1,4 @@
-package jogo;
+package jogo.constantes;
 
 
 
@@ -38,4 +38,7 @@ public class ConstantesJokenpo {
     public static final String PONTOS_COMPUTADOR = "Pontos do computador: ";
 
     public static final String PONTOS_USUARIO = "Pontos do usuario: ";
+
+    public static final String EMPATE_JOGO = "Parece que você e o computador empataram, jogue mais \n" +
+            "para definirem quem é melhor";
 }
