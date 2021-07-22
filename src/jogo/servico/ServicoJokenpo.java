@@ -16,6 +16,8 @@ public class ServicoJokenpo {
 
     private Computador computador = new Computador();
 
+    private String opcaoUsuario = "";
+
     private int computadorEscolha;
 
     private int usuarioEscolha;
@@ -51,7 +53,7 @@ public class ServicoJokenpo {
 
                 System.out.println(ConstantesJokenpo.ESCOLHA_USUARIO);
 
-                String opcaoUsuario = sc1.next();
+                opcaoUsuario = sc1.next();
 
                 validaCampo(opcaoUsuario);
 
@@ -81,12 +83,13 @@ public class ServicoJokenpo {
 
     }
 
-    public String validaCampo(String opcaoUsuario){
-        while (!opcaoUsuario.equals("1") && !opcaoUsuario.equals("2") && !opcaoUsuario.equals("3")){
+    public String validaCampo(String opcao){
+        while (!opcao.equals("1") && !opcao.equals("2") && !opcao.equals("3")){
             System.out.println(ConstantesJokenpo.ESCOLHA_INVALIDA );
             Scanner sc1 = new Scanner(System.in);
-            opcaoUsuario = sc1.next();
+            opcao = sc1.next();
         }
+        opcaoUsuario = opcao;
         return opcaoUsuario;
     }
 
